@@ -1,36 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import './Header.css';
 import lightLogo from "../../assets/logo-light.svg";
 import darkLogo from "../../assets/logo.svg";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.tsx";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher.tsx";
 import { useTranslation } from 'react-i18next';
+import { ThemeContext } from '../../providers/ThemeProvider';
+import Button from "../Button/Button.tsx";
 
 const Header: React.FC = () => {
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const [isDarkMode, setIsDarkMode] = useState(prefersDarkMode);
-
+    const { isDarkMode } = useContext(ThemeContext);
     const { t } = useTranslation();
-
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        const handleChange = (event: MediaQueryListEvent) => {
-            setIsDarkMode(event.matches);
-        };
-
-        mediaQuery.addEventListener('change', handleChange);
-
-        return () => {
-            mediaQuery.removeEventListener('change', handleChange);
-        };
-    }, []);
-
-    const toggleTheme = () => {
-        setIsDarkMode(prevMode => !prevMode);
-    };
 
     return (
         <>
+            {/* Desktop Header */}
             <header className="hidden lg:flex bg-lightBackground dark:bg-darkBackground text-lightText dark:text-darkText">
                 <div className="container mx-auto flex items-center justify-between p-5">
                     <div className="logo">
@@ -47,17 +31,16 @@ const Header: React.FC = () => {
                         <p>{t('header.success')}</p>
                     </div>
                     <div className="language-theme__switcher flex items-center">
-                        <ThemeSwitcher isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+                        <ThemeSwitcher />
                         <LanguageSwitcher />
                     </div>
                 </div>
             </header>
-
-            {/* Мобильный заголовок */}
+            {/* Mobile Header */}
             <header className="lg:hidden bg-lightBackground dark:bg-darkBackground text-lightText dark:text-darkText">
                 <div className="container mx-auto flex flex-col items-center p-5">
                     <div className="flex items-baseline justify-between w-full">
-                        <ThemeSwitcher isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+                        <ThemeSwitcher />
                         <div className="logo mt-4">
                             <img src={isDarkMode ? lightLogo : darkLogo} alt="Logo" />
                         </div>

@@ -12,6 +12,8 @@ export default {
         darkBackground: '#2C2C2C',
         lightText: '#232323',
         darkText: '#FFFFFF',
+        defaultBlue: '#4A86E0',
+        defaultActiveBlue: '#3D6AAE'
       }
     },
   },
