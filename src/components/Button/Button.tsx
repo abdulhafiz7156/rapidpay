@@ -6,11 +6,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({ variant = 'filled', className, children, ...props }) => {
-    const { isDarkMode } = useContext(ThemeContext);
+    // Проверка на существование контекста
+    const themeContext = useContext(ThemeContext);
+    if (!themeContext) {
+        throw new Error('Button must be used within a ThemeProvider');
+    }
 
+    const { isDarkMode } = themeContext;
 
     const baseClasses = 'px-4 py-2 rounded focus:outline-none w-full';
-
 
     const variantClasses = variant === 'filled'
         ? 'bg-defaultBlue text-white'

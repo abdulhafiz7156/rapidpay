@@ -2,7 +2,7 @@ import React from "react";
 
 interface MethodBlockProps {
     title: string;
-    imageSrc: string;
+    imageSrc?: string;
 }
 
 const MethodBlock: React.FC<MethodBlockProps> = ({ title, imageSrc }) => {

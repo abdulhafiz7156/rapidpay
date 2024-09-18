@@ -1,21 +1,16 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
-// Типы для контекста темы
 interface ThemeContextType {
     isDarkMode: boolean;
     toggleTheme: () => void;
 }
 
-// Создание контекста с начальными значениями
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-// Провайдер контекста
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    // Инициализация состояния темы в зависимости от предпочтений пользователя
     const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const [isDarkMode, setIsDarkMode] = useState(prefersDarkMode);
 
-    // Эффект для обновления темы при изменении предпочтений пользователя
     useEffect(() => {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         const handleChange = (event: MediaQueryListEvent) => {
@@ -24,7 +19,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
         mediaQuery.addEventListener('change', handleChange);
 
-        // Установка начальной темы
         document.documentElement.classList.toggle('dark', isDarkMode);
 
         return () => {
@@ -32,7 +26,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         };
     }, [isDarkMode]);
 
-    // Функция для переключения темы
     const toggleTheme = () => {
         setIsDarkMode(prevMode => {
             const newMode = !prevMode;
@@ -48,7 +41,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     );
 };
 
-// Хук для удобного доступа к контексту
 const useTheme = (): ThemeContextType => {
     const context = React.useContext(ThemeContext);
     if (!context) {

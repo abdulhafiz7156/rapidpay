@@ -8,7 +8,12 @@ import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../providers/ThemeProvider';
 
 const Header: React.FC = () => {
-    const { isDarkMode } = useContext(ThemeContext);
+    const themeContext = useContext(ThemeContext);
+    if (!themeContext) {
+        throw new Error('Button must be used within a ThemeProvider');
+    }
+    const { isDarkMode } = themeContext;
+
     const { t } = useTranslation();
 
     return (

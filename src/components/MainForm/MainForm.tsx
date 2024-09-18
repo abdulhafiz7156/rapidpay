@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import MethodBlock from "../MethodBlock/MethodBlock.tsx";
-import methodLogo from "../../assets/methods/spb.png";
 import {useTranslation} from "react-i18next";
 import Details from "../Details/Details.tsx";
 import TransactionInfo from "../TransactionInfo/TransactionInfo.tsx";
@@ -20,7 +19,6 @@ interface Transaction {
 
 const MainForm: React.FC = () => {
     const { t } = useTranslation();
-    const title = t('mainBlock.method');
     const bankName = "Global Bank";
     const [orderData, setOrderData] = useState<Transaction | null>(null);
 
