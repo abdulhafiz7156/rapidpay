@@ -9,7 +9,9 @@ export default {
     extend: {
       colors:{
         lightBackground: '#ffffff',
+        lightBackgroundBlocks: "#F7F7F8",
         darkBackground: '#2C2C2C',
+        darkBackgroundBlocks: "#353535",
         lightText: '#232323',
         darkText: '#FFFFFF',
         defaultBlue: '#4A86E0',

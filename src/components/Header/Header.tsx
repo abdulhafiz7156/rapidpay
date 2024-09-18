@@ -6,7 +6,6 @@ import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.tsx";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher.tsx";
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../providers/ThemeProvider';
-import Button from "../Button/Button.tsx";
 
 const Header: React.FC = () => {
     const { isDarkMode } = useContext(ThemeContext);

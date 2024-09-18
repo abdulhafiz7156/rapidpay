@@ -3,5 +3,17 @@
     "way":  "Yo'l",
     "payment": "To'lov",
     "success": "Muvaffaqiyat"
+  },
+  "mainBlock" : {
+    "methodSpb": "SPB raqami bo'yicha o'tkazish",
+    "methodSpay": "Spay raqami bo'yicha o'tkazish",
+    "methodCardNumber": "Karta raqami bo'yicha o'tkazish",
+    "methodAccountNumber": "Hisob raqami bo'yicha o'tkazish",
+    "details": {
+      "detailsTransaction": "Transferlar uchun tafsilotlar",
+      "sum": "Summa",
+      "name": "Qabul qiluvchining ismi",
+      "bankName": "Qabul qiluvchining banki"
+    }
   }
 }

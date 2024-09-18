@@ -3,5 +3,17 @@
     "way":  "Способ",
     "payment": "Оплата",
     "success": "Успех"
+  },
+  "mainBlock" : {
+    "methodSpb": "Перевод по номеру СПБ",
+    "methodSpay": "Перевод по номеру Spay",
+    "methodCardNumber": "Перевод по номеру карты",
+    "methodAccountNumber": "Перевод по номеру счета",
+    "details": {
+      "detailsTransaction": "Реквизиты для переводы",
+      "sum": "Сумма",
+      "name": "Имя получателя",
+      "bankName": "Банк получателя"
+    }
   }
 }

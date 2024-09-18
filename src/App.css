@@ -4,11 +4,12 @@
 
 
 .main__block {
-    background-image: url("./assets/group-black-logo.svg");
-    background-color: #01112B;
+    /* background-image: url("./assets/group-black-logo.svg"); */
+    background-color: red;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: bottom;
 }
+
