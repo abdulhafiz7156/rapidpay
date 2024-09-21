@@ -39,16 +39,16 @@ const LanguageSwitcher: React.FC = () => {
                 </svg>
             </button>
             {isOpen && (
-                <ul className="absolute top-full left-0 mt-2 bg-lightBackground dark:bg-darkBackground text-lightText dark:text-darkText shadow-lg border border-lightText dark:border-darkText rounded-md">
+                <ul className="absolute top-full mt-2  bg-lightBackground dark:bg-darkBackground text-lightText dark:text-darkText shadow-lg border border-defaultBlue rounded-lg">
                     <li
                         onClick={() => changeLanguage('ru')}
-                        className="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
-                        Ru
+                        className="px-3 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 border-b active:bg-gray-200">
+                        RU
                     </li>
                     <li
                         onClick={() => changeLanguage('uz')}
-                        className="px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
-                        Uz
+                        className="px-3 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-200">
+                        UZ
                     </li>
                 </ul>
             )}

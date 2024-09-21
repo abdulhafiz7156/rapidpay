@@ -14,6 +14,24 @@
       "sum": "Summa",
       "name": "Qabul qiluvchining ismi",
       "bankName": "Qabul qiluvchining banki"
+    },
+    "buttons": {
+      "confirm": "To'lovni tasdiqlang",
+      "cancel": "To'lovni bekor qilish",
+      "uploadCheck": "Tranzaksiya kvitansiyasini yuklang",
+      "backToSite": "Sitega qaytish"
+    },
+    "methodWaitingConfirmation": "Toʻlov tasdiqlanishini kutamiz...",
+    "methodPleaseWait": "Oynani yopmang. 10 daqiqa davom etadi",
+    "payingBill": "Hisobni to'lash",
+    "idTransaction": "Toʻlov identifikatori",
+    "Loading": "Yuklanyapti...",
+    "progressTransaction": {
+      "next": "Keyingisi",
+      "videoInstruction": "Video ko'rsatma",
+      "text1": "O'tkazish uchun ma'lumotlarni nusxalang",
+      "text2": "Mablag'ni nusxalang va o'tkazing",
+      "text3": "O'tkazmani belgilangan muddatdan oldin amalga oshiring va to'lov amalga oshirilishini kuting"
     }
   }
 }

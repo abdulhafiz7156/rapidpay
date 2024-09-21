@@ -15,7 +15,8 @@ export default {
         lightText: '#232323',
         darkText: '#FFFFFF',
         defaultBlue: '#4A86E0',
-        defaultActiveBlue: '#3D6AAE'
+        defaultActiveBlue: '#3D6AAE',
+        greyTextColor: "#B5B5B5"
       }
     },
   },

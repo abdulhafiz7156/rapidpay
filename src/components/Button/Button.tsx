@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../providers/ThemeProvider.tsx';
 
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'filled' | 'outline';
 }
@@ -14,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({ variant = 'filled', className, children
 
     const { isDarkMode } = themeContext;
 
-    const baseClasses = 'px-4 py-2 rounded focus:outline-none w-full';
+    const baseClasses = 'px-4 py-2 rounded focus:outline-none w-full rounded-lg active:bg-defaultActiveBlue';
 
     const variantClasses = variant === 'filled'
         ? 'bg-defaultBlue text-white'

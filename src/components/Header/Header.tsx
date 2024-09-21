@@ -30,7 +30,7 @@ const Header: React.FC = () => {
                         <div className="line"></div>
                         <div className="circle-with-hole"></div>
                         <p>{t('header.payment')}</p>
-                        <div className="line"></div>
+                        <div className="line-grey"></div>
                         <div className="circle-grey"></div>
                         <p>{t('header.success')}</p>
                     </div>

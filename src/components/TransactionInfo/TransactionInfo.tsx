@@ -1,5 +1,6 @@
 import React from "react";
 import copyBoard from "../../assets/icons/copyBoard.svg"
+import {t} from "i18next";
 
 interface TransactionInfoProps {
     id: string;
@@ -9,11 +10,11 @@ interface TransactionInfoProps {
 
 const TransactionInfo: React.FC<TransactionInfoProps> = ({ id, amount, currency }) => {
     return (
-        <div className="transaction-info flex py-1.5 px-2.5 items-center text-lightText dark:text-darkText justify-between bg-lightBackground dark:bg-darkBackgroundBlocks rounded-lg my-5 gap-2">
+        <div className="transaction-info flex py-1.5 px-2.5 items-center text-lightText dark:text-darkText justify-between bg-lightBackground dark:bg-darkBackgroundBlocks rounded-lg my-5 gap-2 w-full">
             <div>
-                <h6 className="text-xs">Оплата счёта</h6>
+                <h6 className="text-xs">{t('mainBlock.payingBill')}</h6>
                 <div>
-                    <p>ID платежа</p>
+                    <p>{t('mainBlock.idTransaction')}</p>
                 </div>
                 <div className="flex gap-2">
                     <h6 className="text-xs">{id}</h6>
