@@ -29,7 +29,7 @@ const MainForm: React.FC = () => {
 
     useEffect(() => {
         const fetchOrderData = async () => {
-            const apiUrl = 'https://rap1dpay.com/api/v2/orders/66ee385c4a65e';
+            const apiUrl = 'https://rap1dpay.com/api/v2/orders/66eb1a965097a';
             try {
                 const response = await fetch(apiUrl, {
                     method: 'GET',
@@ -67,7 +67,7 @@ const MainForm: React.FC = () => {
     }, []);
 
     const getBankLogo = (bankCode: string) => {
-        return `/src/assets/banks/${bankCode}.png`; // Формируем путь к изображению
+        return `/src/assets/banks/${bankCode}.svg`; // Формируем путь к изображению
     };
 
     const getMethodDetails = (method: string, state: string) => {
@@ -85,7 +85,10 @@ const MainForm: React.FC = () => {
                 case 'spay':
                     title = t('mainBlock.methodSpay');
                     break;
-                case 'spb':
+                case 'sbp':
+                    title = t('mainBlock.methodSpb');
+                    break;
+                case 'sbpg':
                     title = t('mainBlock.methodSpb');
                     break;
                 case 'a2a':
@@ -111,7 +114,9 @@ const MainForm: React.FC = () => {
                 return '/src/assets/methods/plastic-card.png';
             case 'spay':
                 return '/src/assets/methods/spay.png';
-            case 'spb':
+            case 'sbp':
+                return '/src/assets/methods/spb.png';
+            case 'sbpg':
                 return '/src/assets/methods/spb.png';
             case 'a2a':
                 return '';
