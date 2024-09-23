@@ -61,7 +61,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
                     bankName: data.invoice.bank.name || 'N/A',
                     bankCode: data.invoice.bank.code || 'N/A',
                     created_at: data.invoice.created_at,
-                    state: data.invoice.state || 'pending',
+                    state: "pending" || 'pending',
                 });
             } catch (error) {
                 setError(error as Error);

@@ -2,7 +2,6 @@ import React from "react";
 import Button from "../Button/Button.tsx";
 import { t } from "i18next";
 import canceledLogo from "../../assets/canceled.png"
-
 const Failed: React.FC = () => {
     return (
         <div className="flex flex-col h-screen">
@@ -14,7 +13,7 @@ const Failed: React.FC = () => {
                 <img
                     src={canceledLogo}
                     alt="Success"
-                    className="mb-"
+                    className="mb-4"
                 />
 
                 <h3 className="text-lg font-bold mb-2">{t('mainBlock.stateTransaction.paymentCanceled')}</h3>
