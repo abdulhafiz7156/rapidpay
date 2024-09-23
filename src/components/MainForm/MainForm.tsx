@@ -15,7 +15,14 @@ const MainForm: React.FC = () => {
     const {t} = useTranslation();
     const {orderData, loading, error} = useAppContext();
 
-    const getBankLogo = (bankCode: string) => `/assets/banks/${bankCode}.svg`;
+    const getBankLogo = (bankCode: string) => {
+        try {
+            // eslint-disable-next-line @typescript-eslint/no-require-imports
+            return require(`/src/assets/banks/${bankCode}.svg`).default;
+        } catch (e) {
+            return '/path/to/default.svg'; // Если банк не найден
+        }
+    };
 
     const getMethodDetails = (method: string, state: string) => {
         let title, subtitle = '';

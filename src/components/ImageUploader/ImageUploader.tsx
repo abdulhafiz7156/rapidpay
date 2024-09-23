@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { t } from "i18next";
 import uploadImage from "../../assets/icons/uploadImage.svg"
+
 interface ImageUploaderProps {
     uploadUrl: string; // URL для загрузки
     onUpload: (base64Image: string) => void; // Функция для обработки загруженного изображения
