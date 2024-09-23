@@ -15,7 +15,7 @@ const MainForm: React.FC = () => {
     const {t} = useTranslation();
     const {orderData, loading, error} = useAppContext();
 
-    const getBankLogo = (bankCode: string) => `/src/assets/banks/${bankCode}.svg`;
+    const getBankLogo = (bankCode: string) => `/assets/banks/${bankCode}.svg`;
 
     const getMethodDetails = (method: string, state: string) => {
         let title, subtitle = '';
@@ -52,11 +52,11 @@ const MainForm: React.FC = () => {
     const getImageSrc = (method: string) => {
         switch (method.toLowerCase()) {
             case 'c2c':
-                return '/src/assets/methods/plastic-card.png';
+                return '/assets/methods/plastic-card.png';
             case 'spay':
-                return '/src/assets/methods/spay.png';
+                return '/assets/methods/spay.png';
             case 'sbp':
-                return '/src/assets/methods/spb.png';
+                return '/assets/methods/spb.png';
             case 'a2a':
                 return ''; // Return empty if no image for method
             default:
