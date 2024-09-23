@@ -1,14 +1,39 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
-const AppContext = createContext(null);
+// Define the shape of your context data
+interface OrderData {
+    transactionId: string;
+    amount: string;
+    number: string;
+    name: string;
+    currency: string;
+    method: string;
+    bankName: string;
+    bankCode: string;
+    created_at: string;
+    state: string;
+}
 
-export const AppProvider = ({ children }) => {
-    const [orderData, setOrderData] = useState(null);
+interface AppContextProps {
+    orderData: OrderData | null;
+    loading: boolean;
+    error: Error | null;
+}
+
+// Create context with default null values
+const AppContext = createContext<AppContextProps | null>(null);
+
+// Define the props for the provider, including children
+interface AppProviderProps {
+    children: ReactNode;
+}
+
+export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
+    const [orderData, setOrderData] = useState<OrderData | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        // Function to fetch order data from API
         const fetchOrderData = async () => {
             const apiUrl = 'https://rap1dpay.com/api/v2/orders/66ee3b8f58b90';
             try {
@@ -36,23 +61,19 @@ export const AppProvider = ({ children }) => {
                     bankName: data.invoice.bank.name || 'N/A',
                     bankCode: data.invoice.bank.code || 'N/A',
                     created_at: data.invoice.created_at,
-                    state: "pending" || 'pending',
+                    state: data.invoice.state || 'pending',
                 });
             } catch (error) {
-                setError(error);
+                setError(error as Error);
                 console.error('Error fetching order data:', error);
             } finally {
                 setLoading(false);
             }
         };
 
-        // Fetch data immediately on mount
         fetchOrderData();
+        const intervalId = setInterval(fetchOrderData, 5000); // Refresh every 5 seconds
 
-        // Set interval to refresh data every 5 seconds
-        const intervalId = setInterval(fetchOrderData, 2000);
-
-        // Cleanup interval on unmount
         return () => clearInterval(intervalId);
     }, []);
 
@@ -63,6 +84,11 @@ export const AppProvider = ({ children }) => {
     );
 };
 
+// Hook to use the context
 export const useAppContext = () => {
-    return useContext(AppContext);
+    const context = useContext(AppContext);
+    if (!context) {
+        throw new Error('useAppContext must be used within an AppProvider');
+    }
+    return context;
 };

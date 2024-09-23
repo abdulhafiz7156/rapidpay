@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import {t} from "i18next";
+import { t } from "i18next";
 
 interface ImageUploaderProps {
     uploadUrl: string; // URL для загрузки
+    onUpload: (base64Image: string) => void; // Функция для обработки загруженного изображения
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ uploadUrl }) => {
+const ImageUploader: React.FC<ImageUploaderProps> = ({ uploadUrl, onUpload }) => {
     const [selectedFileName, setSelectedFileName] = useState<string | null>(null); // Имя файла
     const [isUploading, setIsUploading] = useState(false); // Отслеживание процесса загрузки
     const [isUploaded, setIsUploaded] = useState(false); // Статус успешной загрузки
-    const [errorMessage, setErrorMessage] = useState<string | null>(null); // Ошибка загрузки
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             setSelectedFileName(file.name); // Устанавливаем имя файла
             setIsUploading(true); // Начинаем процесс загрузки
-            setErrorMessage(null); // Сбрасываем ошибки
             try {
                 const base64Image = await convertToBase64(file); // Конвертируем изображение в base64
                 await uploadImageToServer(base64Image); // Загружаем изображение на сервер
                 setIsUploaded(true); // Успешная загрузка
+                onUpload(base64Image); // Вызов функции обратного вызова с base64 изображением
             } catch (error) {
-                setErrorMessage("Error uploading image. Please try again."); // Ошибка загрузки
+                console.log(error);
             } finally {
                 setIsUploading(false); // Завершаем процесс загрузки
             }
@@ -42,7 +42,6 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ uploadUrl }) => {
 
     const uploadImageToServer = async (base64Image: string) => {
         try {
-
             const response = await axios.patch(uploadUrl, {
                 file: base64Image,
                 status: "canceled",
@@ -57,7 +56,6 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ uploadUrl }) => {
             console.error("Error uploading image:", error);
         }
     };
-
 
     return (
         <div className="mt-4 flex justify-center items-center p-2 border rounded-lg border-dashed border-defaultBlue">

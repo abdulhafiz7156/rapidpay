@@ -3,7 +3,6 @@ import { t } from "i18next";
 import Button from "../Button/Button.tsx";
 
 interface SuccessProps {
-    id: string;
     amount: string;
     currency: string;
 }
