@@ -1,6 +1,8 @@
 import React from "react";
 import { t } from "i18next";
 import Button from "../Button/Button.tsx";
+import whiteSuccessLogo from "../../assets/success-white.svg"
+import SuccessLogo from "../../assets/success.svg"
 
 interface SuccessProps {
     amount: string;
@@ -17,13 +19,13 @@ const Success: React.FC<SuccessProps> = ({ amount, currency }) => {
             <div className="h-[50%] flex flex-col items-center justify-center text-lightText dark:text-darkText bg-lightBackground dark:bg-darkBackgroundBlocks rounded-lg p-6 text-center">
                 {/* Картинка для светлой темы */}
                 <img
-                    src="/src/assets/success-white.svg"
+                    src={whiteSuccessLogo}
                     alt="Success"
                     className="mb-4 dark:hidden"
                 />
                 {/* Картинка для тёмной темы */}
                 <img
-                    src="/src/assets/success.svg"
+                    src={SuccessLogo}
                     alt="Success"
                     className="mb-4 hidden dark:block"
                 />

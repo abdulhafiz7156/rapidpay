@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../Button/Button.tsx";
 import { t } from "i18next";
+import canceledLogo from "../../assets/canceled.png"
 
 const Failed: React.FC = () => {
     return (
@@ -10,17 +11,10 @@ const Failed: React.FC = () => {
 
             {/* Основной контент - 50% */}
             <div className="h-[50%] flex flex-col items-center justify-center text-lightText dark:text-darkText bg-lightBackground dark:bg-darkBackgroundBlocks rounded-lg p-6 text-center">
-                {/* Картинка для светлой темы */}
                 <img
-                    src="/src/assets/canceled.png"
+                    src={canceledLogo}
                     alt="Success"
-                    className="mb-4 dark:hidden"
-                />
-                {/* Картинка для тёмной темы */}
-                <img
-                    src="/src/assets/canceled.png"
-                    alt="Success"
-                    className="mb-4 hidden dark:block"
+                    className="mb-"
                 />
 
                 <h3 className="text-lg font-bold mb-2">{t('mainBlock.stateTransaction.paymentCanceled')}</h3>

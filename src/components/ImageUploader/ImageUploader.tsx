@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { t } from "i18next";
-
+import uploadImage from "../../assets/icons/uploadImage.svg"
 interface ImageUploaderProps {
     uploadUrl: string; // URL для загрузки
     onUpload: (base64Image: string) => void; // Функция для обработки загруженного изображения
@@ -60,7 +60,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ uploadUrl, onUpload }) =>
     return (
         <div className="mt-4 flex justify-center items-center p-2 border rounded-lg border-dashed border-defaultBlue">
             <label htmlFor="upload-image" className="flex items-center cursor-pointer">
-                <img src="/src/assets/icons/uploadImage.svg" alt="Upload" className="mr-2" />
+                <img src={uploadImage} alt="Upload" className="mr-2" />
                 {/* Если файл выбран, показать его имя, иначе "Upload Check" */}
                 <span className="text-center">{selectedFileName ? selectedFileName : t('mainBlock.buttons.uploadCheck')}</span>
             </label>
