@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import './ProgressTransaction.css';
 import { t } from "i18next";
 
-interface ProgressTransactionProps {
-    state: string;
-}
 
-const ProgressTransaction: React.FC<ProgressTransactionProps> = ({ state }) => {
+const ProgressTransaction: React.FC = () => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
@@ -52,7 +49,7 @@ const ProgressTransaction: React.FC<ProgressTransactionProps> = ({ state }) => {
 
             <div className="text-center flex justify-center">
                 <button
-                    className="mt-4 pb-2"
+                    className="mt-3 pb-1"
                     onClick={() => setIsExpanded(!isExpanded)}>
                     {isExpanded ?
                         <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">

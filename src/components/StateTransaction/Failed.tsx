@@ -23,9 +23,9 @@ const Failed: React.FC = () => {
                     className="mb-4 hidden dark:block"
                 />
 
-                <h3 className="text-lg font-bold mb-2">Платёж отменён!</h3>
+                <h3 className="text-lg font-bold mb-2">{t('mainBlock.stateTransaction.paymentCanceled')}</h3>
                 <p className="text-sm mb-4 text-greyTextColor">
-                    Платёж был отменён. Если это ошибка, пожалуйста, свяжитесь с поддержкой.
+                    {t('mainBlock.stateTransaction.paymentCanceledDesc')}
                 </p>
             </div>
 

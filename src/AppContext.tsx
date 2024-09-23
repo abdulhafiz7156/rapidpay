@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const AppContext = createContext(null);
 
@@ -36,7 +36,7 @@ export const AppProvider = ({ children }) => {
                     bankName: data.invoice.bank.name || 'N/A',
                     bankCode: data.invoice.bank.code || 'N/A',
                     created_at: data.invoice.created_at,
-                    state: data.invoice.state || 'pending',
+                    state: "pending" || 'pending',
                 });
             } catch (error) {
                 setError(error);
@@ -50,7 +50,7 @@ export const AppProvider = ({ children }) => {
         fetchOrderData();
 
         // Set interval to refresh data every 5 seconds
-        const intervalId = setInterval(fetchOrderData, 5000); // 5000ms = 5 seconds
+        const intervalId = setInterval(fetchOrderData, 2000);
 
         // Cleanup interval on unmount
         return () => clearInterval(intervalId);

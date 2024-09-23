@@ -6,9 +6,11 @@ import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.tsx";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher.tsx";
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../providers/ThemeProvider';
+import {useAppContext} from "../../AppContext.tsx";
 
 const Header: React.FC = () => {
     const themeContext = useContext(ThemeContext);
+    const { orderData } = useAppContext();
     if (!themeContext) {
         throw new Error('Button must be used within a ThemeProvider');
     }
@@ -28,14 +30,17 @@ const Header: React.FC = () => {
                         <div className="circle"></div>
                         <p>{t('header.way')}</p>
                         <div className="line"></div>
-                        <div className="circle-with-hole"></div>
+                        <div
+                            className={`${orderData?.state === 'success' || orderData?.state === 'finished' ? 'circle' : 'circle-with-hole'}`}></div>
                         <p>{t('header.payment')}</p>
-                        <div className="line-grey"></div>
-                        <div className="circle-grey"></div>
+                        <div
+                            className={`${orderData?.state === 'success' || orderData?.state === 'finished' ? 'line' : 'line-grey'}`}></div>
+                        <div
+                            className={`${orderData?.state === 'success' || orderData?.state === 'finished' ? 'circle' : 'circle-grey'}`}></div>
                         <p>{t('header.success')}</p>
                     </div>
                     <div className="language-theme__switcher flex items-center">
-                        <ThemeSwitcher />
+                        <ThemeSwitcher/>
                         <LanguageSwitcher />
                     </div>
                 </div>
@@ -53,9 +58,12 @@ const Header: React.FC = () => {
                     <div className="header__payment__status flex items-center mt-4 w-full justify-between">
                         <div className="circle"></div>
                         <div className="line"></div>
-                        <div className="circle-with-hole"></div>
-                        <div className="line"></div>
-                        <div className="circle-grey"></div>
+                        <div
+                            className={`${orderData?.state === 'success' || orderData?.state === 'finished' ? 'circle' : 'circle-with-hole'}`}></div>
+                        <div
+                            className={`${orderData?.state === 'success' || orderData?.state === 'finished' ? 'line' : 'line-grey'}`}></div>
+                        <div
+                            className={`${orderData?.state === 'success' || orderData?.state === 'finished' ? 'circle' : 'circle-grey'}`}></div>
                     </div>
                 </div>
             </header>

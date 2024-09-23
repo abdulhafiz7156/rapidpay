@@ -29,9 +29,9 @@ const Success: React.FC<SuccessProps> = ({ amount, currency }) => {
                     className="mb-4 hidden dark:block"
                 />
 
-                <h3 className="text-lg font-bold mb-2">Платёж успешен!</h3>
+                <h3 className="text-lg font-bold mb-2">{t('mainBlock.stateTransaction.paymentSucceed')}</h3>
                 <p className="text-sm mb-4 text-greyTextColor">
-                    Платёж будет зачислен через несколько минут. Пожалуйста, подождите.
+                    {t('mainBlock.stateTransaction.paymentSucceedDesc')}
                 </p>
                 <h3 className="text-xl font-semibold">
                     {amount} {currency}

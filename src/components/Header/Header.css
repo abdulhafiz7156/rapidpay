@@ -68,5 +68,10 @@
         flex-grow: 1;
         width: auto;
     }
+
+    .header__payment__status .line-grey{
+        flex-grow: 1;
+        width: auto;
+    }
 }
 

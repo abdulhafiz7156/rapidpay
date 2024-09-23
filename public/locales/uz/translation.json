@@ -32,6 +32,12 @@
       "text1": "O'tkazish uchun ma'lumotlarni nusxalang",
       "text2": "Mablag'ni nusxalang va o'tkazing",
       "text3": "O'tkazmani belgilangan muddatdan oldin amalga oshiring va to'lov amalga oshirilishini kuting"
+    },
+    "stateTransaction": {
+      "paymentCanceled": "Toʻlov bekor qilindi!",
+      "paymentCanceledDesc" : "To'lov bekor qilindi. Agar bu xato bo'lsa, iltimos, qo'llab-quvvatlash xizmatiga murojaat qiling.",
+      "paymentSucceed": "Toʻlov muvaffaqiyatli amalga oshirildi!",
+      "paymentSucceedDesc" : "To'lov bir necha daqiqadan so'ng hisobga olinadi. Iltimos kuting."
     }
   }
 }
