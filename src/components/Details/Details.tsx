@@ -9,7 +9,7 @@ interface DetailsProps {
     name: string;
     bankName: string;
     currency: string;
-    bankLogo: string; // Новый пропс для логотипа банка
+    bankLogo: string;
 }
 
 const Details: React.FC<DetailsProps> = ({ number, amount, name, bankName, currency, bankLogo }) => {
@@ -60,7 +60,7 @@ const Details: React.FC<DetailsProps> = ({ number, amount, name, bankName, curre
                 <div className="flex flex-col">
                     <p>{t('mainBlock.details.bankName')}</p>
                     <div className="flex">
-                        <img src={bankLogo} alt="Лого банка" />
+                        <img src={`${bankLogo}`} alt="Лого банка" />
                         <p className="ml-2">{bankName}</p>
                     </div>
                 </div>
