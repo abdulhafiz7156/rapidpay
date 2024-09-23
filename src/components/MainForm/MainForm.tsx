@@ -13,7 +13,7 @@ import {useAppContext} from "../../AppContext.tsx";
 
 const MainForm: React.FC = () => {
     const {t} = useTranslation();
-    const {orderData} = useAppContext();
+    const {orderData, loading, error} = useAppContext();
 
     const getBankLogo = (bankCode: string) => `/src/assets/banks/${bankCode}.svg`;
 
