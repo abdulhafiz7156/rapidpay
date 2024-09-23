@@ -1,6 +1,6 @@
 import React from "react";
 import MethodBlock from "../MethodBlock/MethodBlock.tsx";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import Details from "../Details/Details.tsx";
 import TransactionInfo from "../TransactionInfo/TransactionInfo.tsx";
 import Timer from "../Timer/Timer.tsx";
@@ -9,11 +9,11 @@ import Success from "../StateTransaction/Success.tsx";
 import ImageUploader from "../ImageUploader/ImageUploader.tsx";
 import Failed from "../StateTransaction/Failed.tsx";
 import ProgressTransaction from "../ProgressTransaction/ProgressTransaction.tsx";
-import { useAppContext } from "../../AppContext.tsx";
+import {useAppContext} from "../../AppContext.tsx";
 
 const MainForm: React.FC = () => {
-    const { t } = useTranslation();
-    const { orderData, loading, error } = useAppContext();
+    const {t} = useTranslation();
+    const {orderData} = useAppContext();
 
     const getBankLogo = (bankCode: string) => `/src/assets/banks/${bankCode}.svg`;
 
@@ -88,7 +88,7 @@ const MainForm: React.FC = () => {
 
     const updateTransactionStatus = async (status: string) => {
         const apiUrl = `https://rap1dpay.com/api/v2/orders/${orderData.transactionId}/status`;
-        const requestData = { status };
+        const requestData = {status};
 
         try {
             const response = await fetch(apiUrl, {
@@ -100,7 +100,7 @@ const MainForm: React.FC = () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                new Error(`HTTP error! Status: ${response.status}`);
             }
 
             return await response.json();
@@ -119,57 +119,58 @@ const MainForm: React.FC = () => {
     };
 
     return (
-        <div className="text-lightText dark:text-darkText max-w-[375px] mx-auto bg-lightBackgroundBlocks dark:bg-darkBackground rounded-lg">
+        <div
+            className="text-lightText dark:text-darkText max-w-[375px] mx-auto bg-lightBackgroundBlocks dark:bg-darkBackground rounded-lg">
             <div className="container mx-auto p-5">
-                    {orderData.state === "finished" || orderData.state === "success" ? (
-                        <div className="flex items-center h-[75vh] flex-col justify-center">
-                            <Success amount={orderData.amount} currency={orderData.currency}/>
-                        </div>
-                    ) : orderData.state === "canceled" || orderData.state === "expired" ? (
-                        <div className="flex items-center h-[75vh] flex-col justify-center">
-                            <Failed/>
-                        </div>
-                    ) : (
-                        <div className="rounded-lg">
-                            <TransactionInfo
-                                id={orderData.transactionId}
-                                amount={orderData.amount}
-                                currency={orderData.currency}
+                {orderData.state === "finished" || orderData.state === "success" ? (
+                    <div className="flex items-center h-[75vh] flex-col justify-center">
+                        <Success amount={orderData.amount} currency={orderData.currency}/>
+                    </div>
+                ) : orderData.state === "canceled" || orderData.state === "expired" ? (
+                    <div className="flex items-center h-[75vh] flex-col justify-center">
+                        <Failed/>
+                    </div>
+                ) : (
+                    <div className="rounded-lg">
+                        <TransactionInfo
+                            id={orderData.transactionId}
+                            amount={orderData.amount}
+                            currency={orderData.currency}
+                        />
+                        <MethodBlock
+                            title={methodDetails.title}
+                            subtitle={methodDetails.subtitle}
+                            imageSrc={methodDetails.imageSrc}
+                        />
+                        <Details
+                            number={orderData.number}
+                            amount={orderData.amount}
+                            name={orderData.name}
+                            bankName={orderData.bankName}
+                            currency={orderData.currency}
+                            bankLogo={getBankLogo(orderData.bankCode)}
+                        />
+                        <Timer createdAt={orderData.created_at}/>
+                        {orderData.state === "in_check" ? (
+                            <ImageUploader
+                                onUpload={(base64Image) => {
+                                    console.log('Image uploaded successfully:', base64Image);
+                                    alert('Image uploaded successfully!');
+                                }}
+                                uploadUrl={`https://rap1dpay.com/api/v2/orders/${orderData.transactionId}/status`}
                             />
-                            <MethodBlock
-                                title={methodDetails.title}
-                                subtitle={methodDetails.subtitle}
-                                imageSrc={methodDetails.imageSrc}
-                            />
-                            <Details
-                                number={orderData.number}
-                                amount={orderData.amount}
-                                name={orderData.name}
-                                bankName={orderData.bankName}
-                                currency={orderData.currency}
-                                bankLogo={getBankLogo(orderData.bankCode)}
-                            />
-                            <Timer createdAt={orderData.created_at}/>
-                            {orderData.state === "in_check" ? (
-                                <ImageUploader
-                                    onUpload={(base64Image) => {
-                                        console.log('Image uploaded successfully:', base64Image);
-                                        alert('Image uploaded successfully!');
-                                    }}
-                                    uploadUrl={`https://rap1dpay.com/api/v2/orders/${orderData.transactionId}/status`}
-                                />
-                            ) : (
-                                <Button variant="filled" onClick={handleConfirm}>
-                                    {t('mainBlock.buttons.confirm')}
-                                </Button>
-                            )}
-                            <Button variant="outline" className="mt-3" onClick={handleCancel}>
-                                {t('mainBlock.buttons.cancel')}
+                        ) : (
+                            <Button variant="filled" onClick={handleConfirm}>
+                                {t('mainBlock.buttons.confirm')}
                             </Button>
-                            <ProgressTransaction />
-                        </div>
-                    )}
-                </div>
+                        )}
+                        <Button variant="outline" className="mt-3" onClick={handleCancel}>
+                            {t('mainBlock.buttons.cancel')}
+                        </Button>
+                        <ProgressTransaction/>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
