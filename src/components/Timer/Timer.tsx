@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import clockIcon from "../../assets/icons/copyBoard.svg";
+import clockIcon from "../../assets/icons/time.svg";
 import moment from "moment-timezone";
 
 interface TimerProps {
