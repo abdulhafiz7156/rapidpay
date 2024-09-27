@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
 
 // Define the shape of your context data
 interface OrderData {
@@ -29,13 +30,20 @@ interface AppProviderProps {
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
+    const { orderId } = useParams<{ orderId: string }>();  // Extract orderId from the URL
     const [orderData, setOrderData] = useState<OrderData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
+        if (!orderId) {
+            setError(new Error("Order ID not found in the URL"));
+            setLoading(false);
+            return;
+        }
+
         const fetchOrderData = async () => {
-            const apiUrl = 'https://rap1dpay.com/api/v2/orders/66ee3b8f58b90';
+            const apiUrl = `https://rap1dpay.com/api/v2/orders/${orderId}`;  // Use the dynamic orderId
             try {
                 const response = await fetch(apiUrl, {
                     method: 'GET',
@@ -61,7 +69,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
                     bankName: data.invoice.bank.name || 'N/A',
                     bankCode: data.invoice.bank.code || 'N/A',
                     created_at: data.invoice.created_at,
-                    state: "pending",
+                    state: data.invoice.state,
                 });
             } catch (error) {
                 setError(error as Error);
@@ -72,10 +80,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         };
 
         fetchOrderData();
-        const intervalId = setInterval(fetchOrderData, 5000); // Refresh every 5 seconds
+        const intervalId = setInterval(fetchOrderData, 2000); // Refresh every 2 seconds
 
         return () => clearInterval(intervalId);
-    }, []);
+    }, [orderId]);  // Re-fetch if the orderId changes
 
     return (
         <AppContext.Provider value={{ orderData, loading, error }}>

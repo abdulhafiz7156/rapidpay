@@ -15,9 +15,9 @@ const MainForm: React.FC = () => {
     const {t} = useTranslation();
     const {orderData, loading, error} = useAppContext();
 
-//    const BASE_URL = process.env.PUBLIC_URL || '';
-  //  const getBankLogo = (bankCode: string) => `${BASE_URL}/assets/banks/${bankCode}.svg`;
-      const getBankLogo = (bankCode: string) => `/assets/banks/${bankCode}.svg`;
+        const BASE_URL = process.env.PUBLIC_URL || '';
+        const getBankLogo = (bankCode: string) => `${BASE_URL}/assets/banks/${bankCode}.svg`;
+      // const getBankLogo = (bankCode: string) => `/assets/banks/${bankCode}.svg`;
 
     const getMethodDetails = (method: string, state: string) => {
         let title, subtitle = '';

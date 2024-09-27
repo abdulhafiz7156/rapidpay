@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+[alias]
+    pushall = "!git push github main && git push gitlab dev"
