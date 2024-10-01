@@ -69,12 +69,13 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
                     bankName: data.invoice.bank.name || 'N/A',
                     bankCode: data.invoice.bank.code || 'N/A',
                     created_at: data.invoice.created_at,
-                    state: "pending",
+                    state: data.invoice.state,
                 });
             } catch (error) {
                 setError(error as Error);
                 console.error('Error fetching order data:', error);
             } finally {
+                console.log(orderData)
                 setLoading(false);
             }
         };
